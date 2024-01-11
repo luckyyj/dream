@@ -13,7 +13,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum ResultEnum {
 
-    DEFAULT_ERROR("-1", "未知错误");
+    DEFAULT_ERROR("-1", "系统异常");
 
     private String code;
 
