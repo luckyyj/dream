@@ -1,7 +1,7 @@
 package cn.com.dream.common.exception;
 
-import cn.com.dream.common.base.enums.ResultEnum;
-import cn.com.dream.common.base.vo.Result;
+import cn.com.dream.common.model.ResponseData;
+import cn.hutool.http.HttpStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -23,9 +23,9 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(value = Exception.class)
-    public Result exceptionHandler(Exception exception) {
-        log.error(ResultEnum.DEFAULT_ERROR.getMsg(), exception);
-        return Result.builder().code(ResultEnum.DEFAULT_ERROR.getCode()).msg(ResultEnum.DEFAULT_ERROR.getMsg()).build();
+    public ResponseData exceptionHandler(Exception exception) {
+        log.error("系统异常", exception);
+        return ResponseData.buildError(HttpStatus.HTTP_INTERNAL_ERROR, "系统异常");
     }
 
     /**
@@ -35,9 +35,9 @@ public class GlobalExceptionHandler {
      * @return
      */
     @ExceptionHandler(value = BaseException.class)
-    public Result baseExceptionHandler(BaseException exception) {
+    public ResponseData baseExceptionHandler(BaseException exception) {
         log.error(exception.getMsg(), exception);
-        return Result.builder().code(exception.getCode()).msg(exception.getMsg()).build();
+        return ResponseData.buildError(exception.getCode(), exception.getMsg());
     }
 
 }

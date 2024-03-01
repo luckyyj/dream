@@ -1,10 +1,7 @@
 package cn.com.dream.common.exception;
 
-import cn.hutool.json.JSONUtil;
+import cn.hutool.http.HttpStatus;
 import lombok.Data;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 /**
  * 自定义异常
@@ -19,24 +16,21 @@ public class BaseException extends RuntimeException {
     /**
      * 异常编码
      */
-    private String code;
+    private Integer code;
 
     /**
      * 异常信息
      */
     private String msg;
 
-    public BaseException(String code, String msg) {
+    public BaseException(Integer code, String msg) {
         super(msg);
         this.code = code;
         this.msg = msg;
     }
 
-    public String toJsonStr() {
-        Map<String, String> jsonMap = new LinkedHashMap<>(2);
-        jsonMap.put("code", code);
-        jsonMap.put("msg", msg);
-        return JSONUtil.toJsonStr(jsonMap);
+    public BaseException(String msg) {
+        this(HttpStatus.HTTP_INTERNAL_ERROR, msg);
     }
 
 }

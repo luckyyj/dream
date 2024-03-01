@@ -1,4 +1,4 @@
-package cn.com.dream.common.base.constants;
+package cn.com.dream.common.constants;
 
 /**
  * 结果常量类
@@ -6,7 +6,12 @@ package cn.com.dream.common.base.constants;
  * @Author yangjun
  * @Date 2020/1/19
  **/
-public class ResultContants {
+public class ResultConstants {
+
+    /**
+     * 错误code
+     */
+    public static final String SUCCESS_CODE = "-1";
 
     /**
      * 错误code
