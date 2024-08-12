@@ -21,6 +21,7 @@
         <hutool.version>5.8.18</hutool.version>
         <mysql.version>5.1.46</mysql.version>
         <jwt.version>0.9.1</jwt.version>
+        <dameng.connector.version>8.1.1.49</dameng.connector.version>
     </properties>
 
     <dependencyManagement>
@@ -51,7 +52,6 @@
                 <version>${jwt.version}</version>
             </dependency>
 
-
             <dependency>
                 <groupId>org.apache.shiro</groupId>
                 <artifactId>shiro-spring</artifactId>
@@ -68,6 +68,12 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.dameng</groupId>
+                <artifactId>Dm8JdbcDriver18</artifactId>
+                <version>${dameng.connector.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
